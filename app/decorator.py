@@ -1,4 +1,5 @@
 from .ext.googleBook import search
+from .ext.etnasBook import searchEtna
 from .resourses import store
 from .models.book import Book
 from .schemas import book_schema
@@ -12,7 +13,7 @@ def set_book(function):
         book = Book.simple_filter(title)
 
         if book is None:
-            book = search(title)
+            book = search(title) if search(title) else searchEtna(title)
             store(book)
 
         book = book_schema.dump(book)
