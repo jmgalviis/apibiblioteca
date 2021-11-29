@@ -10,7 +10,7 @@ class Book(db.Model):
     authors = db.relationship('Author', backref='book', lazy=False, cascade='all, delete-orphan')
     categories = db.relationship('Category', backref='book', lazy=False, cascade='all, delete-orphan')
     published_date = db.Column(db.String, nullable=False)
-    publisher = db.Column(db.String, nullable=False)
+    publisher = db.Column(db.String)
     description = db.Column(db.String)
     image = db.Column(db.String)
     source = db.Column(db.String, default='Interna')
